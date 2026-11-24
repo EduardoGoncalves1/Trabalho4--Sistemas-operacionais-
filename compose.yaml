@@ -1,0 +1,19 @@
+services:
+  web:
+    build: .
+    image: trabalho4:1.0
+    container_name: trabalho4
+    ports:
+      - "${PORT:-8080}:${PORT:-8080}"
+    environment:
+      PORT: ${PORT:-8080}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    restart: on-failure
+    mem_limit: 128m
+    cpus: 0.5
+    pids_limit: 64
+    read_only: true
+    privileged: false
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
